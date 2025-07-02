@@ -70,7 +70,10 @@ export class BookService implements OnInit {
 
   loadServiceTypes() {
     this.serviceTypeService.getAllServiceTypes().subscribe({
-      next: (res) => (this.serviceTypes = res),
+      next: (res) => {
+        console.log('Service Types:', res); // Debugging line
+        this.serviceTypes = res;
+      },
       error: (err) => console.error('Failed to load service types', err)
     });
   }
@@ -86,10 +89,20 @@ export class BookService implements OnInit {
   }
 
   onServiceTypeChange(): void {
+    console.log('Selected Service Type ID:', this.serviceBooking.serviceTypeId); // Debugging line
+    console.log('Service Types:', this.serviceTypes); // Debugging line
+  
     const selected = this.serviceTypes.find(
-      (type) => type.serviceTypeId == this.serviceBooking.serviceTypeId
+      (type) => type.serviceTypeid === +this.serviceBooking.serviceTypeId // Ensure type conversion
     );
-    this.selectedPrice = selected?.price ?? null;
+  
+    if (selected) {
+      this.selectedPrice = selected.price;
+      console.log('Selected Price:', this.selectedPrice); // Debugging line
+    } else {
+      this.selectedPrice = null;
+      console.warn('No matching service type found.');
+    }
   }
 
   onSubmit() {

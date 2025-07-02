@@ -7,6 +7,7 @@ import { ServiceTypeService, ServiceType } from '../../../shared/services/servic
   selector: 'app-servicetype',
   standalone: true,
   templateUrl: './servicetype.html',
+  styleUrls: ['./servicetype.css'],
   imports: [CommonModule, RouterModule],
 })
 export class ServiceTypeComponent implements OnInit {

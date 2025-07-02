@@ -30,14 +30,14 @@
   <label for="serviceType">Service Type</label><br />
   <select [(ngModel)]="serviceBooking.serviceTypeId" name="serviceTypeId" required (change)="onServiceTypeChange()">
     <option value="" disabled selected>Select service type</option>
-    <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeId">
+    <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeid">
       {{ type.description }}
     </option>
   </select><br /><br />
 
   <!-- Price -->
   <label>Price</label><br />
-  <input type="text" [value]="selectedPrice || ''" readonly /> <br /><br />
+  <input type="text" [value]="selectedPrice | currency" readonly /> <br /><br />
 
   <!-- Date -->
   <label>Date</label><br />
