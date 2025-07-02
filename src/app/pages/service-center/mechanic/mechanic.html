@@ -1,36 +1,35 @@
 <section class="mechanic-container container py-5">
   <!-- Page Header -->
-  <div class="text-center mb-5">
-    <h3 class="fw-bold text-primary display-4">Manage Mechanics</h3>
-    <p class="text-muted fs-5">View and manage all mechanics in your service center.</p>
+  <div class="mb-5">
+    <h2 class="fw-bold text-primary display-4">Manage Mechanics</h2>
   </div>
 
   <!-- Add Mechanic Button -->
   <div class="text-center mb-4">
-    <button routerLink="/service-center/add-mechanic" class="btn btn-primary btn-lg px-4 py-2 shadow">
+    <button routerLink="/service-center/add-mechanic" class="btn btn-primary btn-lg px-4 py-2 shadow-sm rounded-pill">
       <i class="bi bi-plus-circle"></i> Add Mechanic
     </button>
   </div>
 
   <!-- No Mechanics Found -->
-  <div *ngIf="mechanics.length === 0" class="text-center text-muted">
-    <div class="alert alert-warning shadow-sm" role="alert">
-      <i class="bi bi-info-circle"></i> No mechanics added yet. Click "Add Mechanic" to get started.
+  <div *ngIf="mechanics.length === 0" class="text-center">
+    <div class="alert alert-warning shadow-sm rounded" role="alert">
+      <i class="bi bi-info-circle text-warning"></i> No mechanics added yet. Click <strong>"Add Mechanic"</strong> to get started.
     </div>
   </div>
 
   <!-- Mechanics List -->
   <div class="row g-4" *ngIf="mechanics.length > 0">
     <div class="col-lg-4 col-md-6" *ngFor="let mechanic of mechanics">
-      <div class="card h-100 shadow-lg border-0">
+      <div class="card h-100 shadow border-0 rounded-lg">
         <div class="card-body">
           <h5 class="card-title text-primary fw-bold">{{ mechanic.mechanicName }}</h5>
-          <p class="card-text">
+          <p class="card-text mb-2">
             <strong>Expertise:</strong> {{ mechanic.expertise }}
           </p>
         </div>
         <div class="card-footer bg-light text-end">
-          <button class="btn btn-danger btn-sm px-3 py-1 shadow-sm" (click)="deleteMechanic(mechanic.mechanicId)">
+          <button class="btn btn-danger btn-sm px-3 py-1 shadow-sm rounded-pill" (click)="deleteMechanic(mechanic.mechanicId)">
             <i class="bi bi-trash"></i> Delete
           </button>
         </div>
