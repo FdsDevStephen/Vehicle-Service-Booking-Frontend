@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="auth-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-box">
+    <h2>Register</h2>
+
+    <!-- Toggle Buttons -->
+    <div class="toggle-role">
+      <button type="button" [class.active]="form.get('role')?.value === 'User'" (click)="selectRole('User')">
+        I’m a Customer
+      </button>
+      <button type="button" [class.active]="form.get('role')?.value === 'ServiceCenter'" (click)="selectRole('ServiceCenter')">
+        I’m a Service Center
+      </button>
+    </div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" formControlName="fullName" />
+      <small *ngIf="isSubmitted && form.get('fullName')?.invalid" class="error">Full name is required</small>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" />
+      <small *ngIf="isSubmitted && form.get('email')?.hasError('required')" class="error">Email is required</small>
+      <small *ngIf="isSubmitted && form.get('email')?.hasError('email')" class="error">Invalid email format</small>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" formControlName="password" />
+      <small *ngIf="isSubmitted && form.get('password')?.hasError('required')" class="error">Password is required</small>
+      <small *ngIf="isSubmitted && form.get('password')?.hasError('minlength')" class="error">Minimum 8 characters</small>
+      <small *ngIf="isSubmitted && form.get('password')?.hasError('pattern')" class="error">Must include A-Z, a-z, 0-9 and symbol</small>
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" formControlName="confirmPassword" />
+      <small *ngIf="isSubmitted && form.get('confirmPassword')?.hasError('required')" class="error">Confirm your password</small>
+      <small *ngIf="isSubmitted && form.get('confirmPassword')?.hasError('mismatch')" class="error">Passwords do not match</small>
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="text" formControlName="phoneNumber" />
+      <small *ngIf="isSubmitted && form.get('phoneNumber')?.hasError('required')" class="error">Phone number is required</small>
+      <small *ngIf="isSubmitted && form.get('phoneNumber')?.hasError('pattern')" class="error">Must be 10 digits</small>
+    </div>
+
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" formControlName="address" />
+      <small *ngIf="isSubmitted && form.get('address')?.invalid" class="error">Address is required</small>
+    </div>
+
+    <!-- Service Center fields -->
+    <ng-container *ngIf="form.get('role')?.value === 'ServiceCenter'">
+      <div class="form-group">
+        <label>Service Center Name</label>
+        <input type="text" formControlName="serviceCenterName" />
+        <small *ngIf="isSubmitted && form.get('serviceCenterName')?.hasError('required')" class="error">Required</small>
+      </div>
+      <div class="form-group">
+        <label>Service Center Location</label>
+        <input type="text" formControlName="serviceCenterLocation" />
+        <small *ngIf="isSubmitted && form.get('serviceCenterLocation')?.hasError('required')" class="error">Required</small>
+      </div>
+      <div class="form-group">
+        <label>Service Center Contact</label>
+        <input type="text" formControlName="serviceCenterContact" />
+        <small *ngIf="isSubmitted && form.get('serviceCenterContact')?.hasError('required')" class="error">Required</small>
+      </div>
+    </ng-container>
+
+    <button type="submit" class="btn-submit">Register</button>
+
+    <p class="footer-link">
+      Already have an account? <a routerLink="/login">Login</a>
+    </p>
+  </form>
+</div>
+<app-footer></app-footer>

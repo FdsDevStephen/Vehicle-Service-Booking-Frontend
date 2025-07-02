@@ -1,0 +1,55 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<section class="vehicle-container">
+  <div class="header">
+    <h2>My Vehicles</h2>
+    <button routerLink="/vehicles/register" class="add-btn">
+      <span class="plus">+</span> Add Vehicle
+    </button>
+  </div>
+
+  <!-- Friendly message for empty list -->
+  <div *ngIf="vehicles.length === 0" class="no-data-message">
+    <p>You haven’t added any vehicles yet. Click "Add Vehicle" to get started.</p>
+  </div>
+
+  <!-- Vehicle Cards -->
+  <div class="vehicle-grid" *ngIf="vehicles.length > 0">
+    <div class="vehicle-card" *ngFor="let v of vehicles">
+      <ng-container *ngIf="editingVehicleId !== v.vehicleid; else editMode">
+        <h3>{{ v.make }}</h3>
+        <p><strong>Model:</strong> {{ v.model }}</p>
+        <p><strong>Year:</strong> {{ v.year }}</p>
+        <p><strong>Reg No:</strong> {{ v.registrationNumber }}</p>
+
+        <div class="card-actions">
+          <button (click)="startEditing(v)" class="edit-btn">
+            <i class="fas fa-pen"></i> Edit
+          </button>
+          <button (click)="deleteVehicle(v.vehicleid)" class="delete-btn">
+            <i class="fas fa-trash-alt"></i> Delete
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-template #editMode>
+        <input [(ngModel)]="editedVehicle.make" placeholder="Make" />
+        <input [(ngModel)]="editedVehicle.model" placeholder="Model" />
+        <input [(ngModel)]="editedVehicle.year" placeholder="Year" />
+        <input [(ngModel)]="editedVehicle.registrationNumber" placeholder="Registration No." />
+
+        <div class="card-actions">
+          <button (click)="saveEdit()" class="save-btn">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button (click)="cancelEditing()" class="cancel-btn">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

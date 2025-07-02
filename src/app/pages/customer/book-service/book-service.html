@@ -1,0 +1,58 @@
+<h2>Book a Vehicle Service</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <!-- Vehicle -->
+  <label for="vehicle">Vehicle</label><br />
+  <select [(ngModel)]="serviceBooking.vehicleId" name="vehicleId" required>
+    <option value="" disabled selected>Select your vehicle</option>
+    <option *ngFor="let v of vehicles" [value]="v.vehicleid">
+      {{ v.make }} {{ v.model }} ({{ v.registrationNumber }})
+    </option>
+  </select><br /><br />
+
+  <!-- Location -->
+  <label>Select Location</label><br />
+  <select [(ngModel)]="selectedLocation" (change)="filterServiceCenters()" name="location">
+    <option value="">All Locations</option>
+    <option *ngFor="let loc of uniqueLocations" [value]="loc">{{ loc }}</option>
+  </select><br /><br />
+
+  <!-- Service Center -->
+  <label for="serviceCenter">Service Center</label><br />
+  <select [(ngModel)]="serviceBooking.serviceCenterId" name="serviceCenterId" required>
+    <option value="" disabled selected>Select service center</option>
+    <option *ngFor="let sc of filteredServiceCenters" [value]="sc.serviceCenterId">
+      {{ sc.serviceCenterName }} - {{ sc.serviceCenterLocation }}
+    </option>
+  </select><br /><br />
+
+  <!-- Service Type -->
+  <label for="serviceType">Service Type</label><br />
+  <select [(ngModel)]="serviceBooking.serviceTypeId" name="serviceTypeId" required (change)="onServiceTypeChange()">
+    <option value="" disabled selected>Select service type</option>
+    <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeId">
+      {{ type.description }}
+    </option>
+  </select><br /><br />
+
+  <!-- Price -->
+  <label>Price</label><br />
+  <input type="text" [value]="selectedPrice || ''" readonly /> <br /><br />
+
+  <!-- Date -->
+  <label>Date</label><br />
+  <input type="date" [(ngModel)]="serviceBooking.date" name="date" required [min]="minDate" /><br /><br />
+
+  <!-- Time -->
+  <label>Time</label><br />
+  <input
+    type="time"
+    [(ngModel)]="serviceBooking.time"
+    name="time"
+    required
+    min="07:00"
+    max="23:00"
+  /><br /><br />
+
+  <button type="submit">Book Service</button>
+</form>

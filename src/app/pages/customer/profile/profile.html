@@ -1,0 +1,30 @@
+<h2>User Profile</h2>
+
+<form (ngSubmit)="onUpdate()">
+  <label>Name</label>
+  <input type="text" [(ngModel)]="profile.name" name="name" required /><br /><br />
+
+  <label>Email</label>
+  <input type="email" [value]="profile.email" disabled /><br /><br />
+
+  <label>Phone</label>
+  <input type="text" [(ngModel)]="profile.phone" name="phone" required /><br /><br />
+
+  <label>Address</label>
+  <input type="text" [(ngModel)]="profile.address" name="address" /><br /><br />
+
+  <div *ngIf="isServiceCenter">
+    <h3>Service Center Info</h3>
+
+    <label>Center Name</label>
+    <input type="text" [(ngModel)]="profile.serviceCenterName" name="serviceCenterName" /><br /><br />
+
+    <label>Location</label>
+    <input type="text" [(ngModel)]="profile.serviceCenterLocation" name="serviceCenterLocation" /><br /><br />
+
+    <label>Contact</label>
+    <input type="text" [(ngModel)]="profile.serviceCenterContact" name="serviceCenterContact" /><br /><br />
+  </div>
+
+  <button type="submit">Update Profile</button>
+</form>

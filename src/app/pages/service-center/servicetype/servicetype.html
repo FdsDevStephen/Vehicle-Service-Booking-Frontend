@@ -1,0 +1,51 @@
+<div class="container py-5">
+  <!-- Page Header -->
+  <div class="row justify-content-between align-items-center mb-4">
+    <div class="col">
+      <h3 class="text-dark fw-bold">Manage Services</h3>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" routerLink="/service-center/add-service">
+        <i class="bi bi-plus-circle"></i> Add Service
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="mt-3 text-muted">Loading service types...</p>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center my-5">
+    <p class="mb-0">{{ errorMessage }}</p>
+  </div>
+
+  <!-- Service Types Table -->
+  <div *ngIf="!isLoading && !errorMessage" class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of serviceTypes; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ service.description }}</td>
+          <td>{{ service.price | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Services Found -->
+  <div *ngIf="!isLoading && serviceTypes.length === 0" class="text-center my-5">
+    <p class="text-muted">No services found. Click "Add Service" to create one.</p>
+  </div>
+</div>

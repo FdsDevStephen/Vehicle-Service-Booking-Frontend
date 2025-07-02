@@ -1,0 +1,48 @@
+<!-- Main Dashboard Section -->
+<section class="dashboard-container">
+  <!-- Greeting -->
+  <h1 class="welcome-text">Welcome, {{ userName }}</h1>
+  <p class="subtext">Manage your vehicle services and bookings.</p>
+
+  <!-- Shortcuts -->
+  <h2 class="section-title">Action Shortcuts</h2>
+  <div class="shortcut-cards">
+    <div class="shortcut-card" [routerLink]="'/book-service'">
+      <span class="icon material-symbols-outlined">event</span>
+      <h3>Book Service</h3>
+      <p>Schedule a service for your vehicle</p>
+    </div>
+    <div class="shortcut-card" [routerLink]="'/vehicles/register'">
+      <span class="icon material-symbols-outlined">add_circle</span>
+      <h3>Add Vehicle</h3>
+      <p>Register a new vehicle</p>
+    </div>
+    <div class="shortcut-card" [routerLink]="'/my-bookings'">
+      <span class="icon material-symbols-outlined">calendar_month</span>
+      <h3>View Bookings</h3>
+      <p>See your service appointments</p>
+    </div>
+  </div>
+
+  <!-- Bookings Overview -->
+  <h2 class="section-title">Bookings Overview</h2>
+  <table class="bookings-table">
+    <thead>
+      <tr>
+        <th>Service Center</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="bookings.length === 0">
+        <td colspan="3" class="no-bookings">No service bookings yet.</td>
+      </tr>
+      <tr *ngFor="let booking of bookings">
+        <td data-label="Service Center">{{ booking.serviceCenterName }}</td>
+        <td data-label="Date">{{ booking.date | date:'mediumDate' }}</td>
+        <td data-label="Status">{{ booking.serviceStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

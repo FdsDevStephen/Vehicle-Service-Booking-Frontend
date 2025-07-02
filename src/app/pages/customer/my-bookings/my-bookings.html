@@ -1,0 +1,144 @@
+<section class="booking-container">
+
+  <!-- No Bookings Overall -->
+  <div *ngIf="pendingBookings.length === 0 && cancelledBookings.length === 0 && completedBookings.length === 0" class="no-bookings-message">
+    <p>You haven’t booked any services yet. Start by booking one!</p>
+  </div>
+
+  <!-- PENDING BOOKINGS -->
+  <div *ngIf="pendingBookings.length > 0">
+    <h2>Pending Bookings</h2>
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Vehicle</th>
+          <th>Registration Number</th>
+          <th>Service Type</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Service Center</th>
+          <th>Mechanic</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of pendingBookings">
+          <td [attr.data-label]="'Make'">{{ b.make }}</td>
+          <td [attr.data-label]="'Registration Number'">{{ b.registrationNumber }}</td>
+
+          <!-- Editable Service Type -->
+          <td [attr.data-label]="'Service Type'">
+            <ng-container *ngIf="editId === b.bookingId; else displayServiceType">
+              <select [(ngModel)]="b.serviceTypeId">
+                <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeId">
+                  {{ type.description }}
+                </option>
+              </select>
+            </ng-container>
+            <ng-template #displayServiceType>{{ b.serviceTypeDescription }}</ng-template>
+          </td>
+
+          <!-- Editable Date -->
+          <td [attr.data-label]="'Date'">
+            <ng-container *ngIf="editId === b.bookingId; else displayDate">
+              <input type="date" [(ngModel)]="b.date" [min]="minDate" />
+            </ng-container>
+            <ng-template #displayDate>{{ b.date | date:'mediumDate' }}</ng-template>
+          </td>
+
+          <!-- Editable Time -->
+          <td [attr.data-label]="'Time'">
+            <ng-container *ngIf="editId === b.bookingId; else displayTime">
+              <input type="time" [(ngModel)]="b.timeSlot" />
+            </ng-container>
+            <ng-template #displayTime>{{ b.timeSlot }}</ng-template>
+          </td>
+
+          <td [attr.data-label]="'Service Center'">{{ b.serviceCenterName }}</td>
+          <td [attr.data-label]="'Mechanic'">{{ b.mechanicName }}</td>
+          <td [attr.data-label]="'Status'">{{ b.serviceStatus }}</td>
+
+          <!-- Actions -->
+          <td [attr.data-label]="'Actions'">
+            <div class="action-btn-group">
+              <ng-container *ngIf="editId === b.bookingId; else normalMode">
+                <button (click)="saveEdit(b)">Save</button>
+                <button (click)="cancelEdit()">Cancel</button>
+              </ng-container>
+              <ng-template #normalMode>
+                <button (click)="startEdit(b)">Edit</button>
+                <button (click)="cancelBooking(b.bookingId)" class="btn-cancel">Cancel</button>
+              </ng-template>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+
+  <!-- COMPLETED BOOKINGS -->
+  <div *ngIf="completedBookings.length > 0">
+    <h2 class="mt-4">Completed Bookings</h2>
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Make</th>
+          <th>Registration Number</th>
+          <th>Service Type</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Service Center</th>
+          <th>Mechanic</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of completedBookings">
+          <td [attr.data-label]="'Make'">{{ b.make }}</td>
+          <td [attr.data-label]="'Registration Number'">{{ b.registrationNumber }}</td>
+          <td [attr.data-label]="'Service Type'">{{ b.serviceTypeDescription }}</td>
+          <td [attr.data-label]="'Date'">{{ b.date | date:'mediumDate' }}</td>
+          <td [attr.data-label]="'Time'">{{ b.timeSlot }}</td>
+          <td [attr.data-label]="'Service Center'">{{ b.serviceCenterName }}</td>
+          <td [attr.data-label]="'Mechanic'">{{ b.mechanicName }}</td>
+          <td [attr.data-label]="'Status'">{{ b.serviceStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CANCELLED BOOKINGS -->
+  <div *ngIf="cancelledBookings.length > 0">
+    <h2 class="mt-4">Cancelled Bookings</h2>
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Make</th>
+          <th>Registration Number</th>
+          <th>Service Type</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Service Center</th>
+          <th>Mechanic</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let b of cancelledBookings">
+          <td [attr.data-label]="'Make'">{{ b.make }}</td>
+          <td [attr.data-label]="'Registration Number'">{{ b.registrationNumber }}</td>
+          <td [attr.data-label]="'Service Type'">{{ b.serviceTypeDescription }}</td>
+          <td [attr.data-label]="'Date'">{{ b.date | date:'mediumDate' }}</td>
+          <td [attr.data-label]="'Time'">{{ b.timeSlot }}</td>
+          <td [attr.data-label]="'Service Center'">{{ b.serviceCenterName }}</td>
+          <td [attr.data-label]="'Mechanic'">{{ b.mechanicName }}</td>
+          <td [attr.data-label]="'Status'">{{ b.serviceStatus }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>

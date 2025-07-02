@@ -1,0 +1,145 @@
+/* HEADER STYLES */
+
+.navbar {
+    background-color: #003366;
+    color: white;
+    padding: 2px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInDown 0.7s cubic-bezier(.23,1.17,.51,1.01) 0.05s backwards;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    max-height: 120px;
+    width: auto;
+    margin-right: 24px;
+}
+
+/* Navigation Links */
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    font-family: 'Roboto';
+    transition: color 0.3s;
+    cursor: pointer; /* Ensures pointer cursor on hover */
+}
+
+.nav-links a:hover,
+.nav-links .active-link {
+    color: #ffcc00;
+}
+
+/* Buttons */
+
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid white;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer; /* Ensures pointer cursor on hover */
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: #003366;
+}
+
+.btn-filled {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer; /* Ensures pointer cursor on hover */
+    transition: background 0.3s ease;
+}
+
+.btn-filled:hover {
+    background-color: #e65c00;
+}
+
+/* Hamburger Button */
+
+.hamburger {
+    display: none;
+    font-size: 26px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer; /* Ensures pointer cursor on hover */
+}
+
+/* Mobile Styles */
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #003366;
+        padding: 16px 0;
+        z-index: 999;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a,
+    .nav-links button {
+        font-size: 1rem;
+        text-align: center;
+        cursor: pointer; /* Ensures pointer cursor on hover */
+    }
+
+    .menu-btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer; /* Ensures pointer cursor on hover */
+    }
+
+    .nav-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+}

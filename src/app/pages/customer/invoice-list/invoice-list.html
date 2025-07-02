@@ -1,0 +1,32 @@
+<h2>Your Invoices</h2>
+
+<!-- Show message if no invoices -->
+<div *ngIf="invoices.length === 0" class="no-data-message">
+  <p>You don’t have any invoices yet. Book a service to get started.</p>
+</div>
+
+<!-- Invoice table -->
+<table class="table table-bordered" *ngIf="invoices.length > 0">
+  <thead>
+    <tr>
+      <th>Invoice ID</th>
+      <th>Booking ID</th>
+      <th>Service Type</th>
+      <th>Total Amount</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let invoice of invoices">
+      <td [attr.data-label]="'Invoice ID'">{{ invoice.invoiceId }}</td>
+      <td [attr.data-label]="'Booking ID'">{{ invoice.bookingId }}</td>
+      <td [attr.data-label]="'Service Type'">{{ invoice.serviceTypeDescription }}</td>
+      <td [attr.data-label]="'Total Amount'">{{ invoice.totalAmount | currency }}</td>
+      <td [attr.data-label]="'Status'">{{ invoice.paymentStatus }}</td>
+      <td [attr.data-label]="'Actions'">
+        <button (click)="viewDetails(invoice.invoiceId)" class="btn btn-primary">View</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

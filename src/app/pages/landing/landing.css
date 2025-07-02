@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #003366;
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar nav a, .navbar button {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 1px solid white;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .btn-filled {
+    background: #ff6600;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 30px;
+    background: #f0f6ff;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons .btn-orange {
+    background: #ff8800;
+    color: white;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: none;
+  }
+  
+  .cta-buttons .btn-dark {
+    background: #002244;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .hero-img img {
+    max-width: 250px;
+  }
+  
+  .features {
+    padding: 40px 30px;
+    text-align: center;
+  }
+  
+  .feature-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .feature-item {
+    width: 200px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px #ccc;
+  }
+  
+  .why-us {
+    padding: 40px 30px;
+    text-align: center;
+  }
+  
+  .reasons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .footer {
+    background: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer .social img {
+    margin: 0 8px;
+  }
+  

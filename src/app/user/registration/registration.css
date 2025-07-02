@@ -1,0 +1,107 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .register-box {
+    background: white;
+    padding: 30px 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .register-box h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 25px;
+  }
+  
+  .toggle-role {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .toggle-role button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-role button.active {
+    background: #003366;
+    color: white;
+    border-color: #003366;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #003366;
+  }
+  
+  .footer-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-link a {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .footer-link a:hover {
+    text-decoration: underline;
+  }
+  
+
+  .error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  

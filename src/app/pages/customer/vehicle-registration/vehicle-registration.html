@@ -1,0 +1,19 @@
+<div class="form-container">
+    <h2>Vehicle Registration</h2>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>Make</label>
+      <input type="text" formControlName="make" />
+  
+      <label>Model</label>
+      <input type="text" formControlName="model" />
+  
+      <label>Year</label>
+      <input type="number" formControlName="year" />
+  
+      <label>Registration Number</label>
+      <input type="text" formControlName="registrationNumber" />
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>

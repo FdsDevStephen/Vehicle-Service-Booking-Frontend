@@ -1,0 +1,147 @@
+<section class="booking-container container mt-4">
+
+  <!-- No Appointments Overall -->
+  <div *ngIf="pendingAppointments.length === 0 && completedAppointments.length === 0 && cancelledAppointments.length === 0" class="no-bookings-message text-center">
+    <p class="text-muted fs-5">You currently have no appointments.</p>
+  </div>
+
+  <!-- Pending Appointments -->
+  <div *ngIf="pendingAppointments.length > 0" class="pending-bookings">
+    <h2 class="text-primary mb-3">Pending Appointments</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Booking ID</th>
+            <th>Registration Number</th>
+            <th>Customer Name</th>
+            <th>Mechanic Name</th>
+            <th>Service Type</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of getPaginatedData(pendingAppointments, 'scheduled')">
+            <td>{{ appointment.bookingId }}</td>
+            <td>{{ appointment.registrationNumber }}</td>
+            <td>{{ appointment.customerName }}</td>
+            <td>{{ appointment.mechanicName }}</td>
+            <td>{{ appointment.serviceTypeDescription }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.timeSlot }}</td>
+            <td>{{ appointment.price | currency }}</td>
+            <td>{{ appointment.serviceStatus }}</td>
+            <td>
+              <button class="btn btn-success btn-sm" (click)="markAsCompleted(appointment.bookingId)">Mark as Completed</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="pagination-controls text-center mt-3">
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.scheduled === 1" (click)="changePage('scheduled', currentPage.scheduled - 1)">
+        Previous
+      </button>
+      <span class="mx-2">Page {{ currentPage.scheduled }} of {{ getTotalPages(pendingAppointments) }}</span>
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.scheduled === getTotalPages(pendingAppointments)" (click)="changePage('scheduled', currentPage.scheduled + 1)">
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Completed Appointments -->
+  <div *ngIf="completedAppointments.length > 0" class="completed-bookings mt-5">
+    <h2 class="text-primary mb-3">Completed Appointments</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Booking ID</th>
+            <th>Registration Number</th>
+            <th>Customer Name</th>
+            <th>Mechanic Name</th>
+            <th>Service Type</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of getPaginatedData(completedAppointments, 'completed')">
+            <td>{{ appointment.bookingId }}</td>
+            <td>{{ appointment.registrationNumber }}</td>
+            <td>{{ appointment.customerName }}</td>
+            <td>{{ appointment.mechanicName }}</td>
+            <td>{{ appointment.serviceTypeDescription }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.timeSlot }}</td>
+            <td>{{ appointment.price | currency }}</td>
+            <td>{{ appointment.serviceStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="pagination-controls text-center mt-3">
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.completed === 1" (click)="changePage('completed', currentPage.completed - 1)">
+        Previous
+      </button>
+      <span class="mx-2">Page {{ currentPage.completed }} of {{ getTotalPages(completedAppointments) }}</span>
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.completed === getTotalPages(completedAppointments)" (click)="changePage('completed', currentPage.completed + 1)">
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Cancelled Appointments -->
+  <div *ngIf="cancelledAppointments.length > 0" class="cancelled-bookings mt-5">
+    <h2 class="text-primary mb-3">Cancelled Appointments</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>Booking ID</th>
+            <th>Registration Number</th>
+            <th>Customer Name</th>
+            <th>Mechanic Name</th>
+            <th>Service Type</th>
+            <th>Date</th>
+            <th>Time Slot</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of getPaginatedData(cancelledAppointments, 'cancelled')">
+            <td>{{ appointment.bookingId }}</td>
+            <td>{{ appointment.registrationNumber }}</td>
+            <td>{{ appointment.customerName }}</td>
+            <td>{{ appointment.mechanicName }}</td>
+            <td>{{ appointment.serviceTypeDescription }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.timeSlot }}</td>
+            <td>{{ appointment.price | currency }}</td>
+            <td>Cancelled</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="pagination-controls text-center mt-3">
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.cancelled === 1" (click)="changePage('cancelled', currentPage.cancelled - 1)">
+        Previous
+      </button>
+      <span class="mx-2">Page {{ currentPage.cancelled }} of {{ getTotalPages(cancelledAppointments) }}</span>
+      <button class="btn btn-secondary btn-sm" [disabled]="currentPage.cancelled === getTotalPages(cancelledAppointments)" (click)="changePage('cancelled', currentPage.cancelled + 1)">
+        Next
+      </button>
+    </div>
+  </div>
+
+</section>

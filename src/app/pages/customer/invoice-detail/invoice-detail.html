@@ -1,0 +1,32 @@
+<h2>Invoice Details</h2>
+ 
+<div *ngIf="invoice">
+  <p><strong>Invoice ID:</strong> {{ invoice.invoiceId }}</p>
+  <p><strong>Booking ID:</strong> {{ invoice.bookingId }}</p>
+  <p><strong>Service Type:</strong> {{ invoice.serviceTypeDescription }}</p>
+  <p><strong>Total Amount:</strong> {{ invoice.totalAmount | currency }}</p>
+  <p><strong>Status:</strong> {{ invoice.paymentStatus }}</p>
+ 
+  <div *ngIf="invoice.paymentStatus === 'Pending'">
+    <button class="btn btn-success" (click)="payInvoice()">Pay Now</button>
+  </div>
+</div>
+ 
+<hr />
+ 
+<div *ngIf="booking && vehicle">
+  <h3>Booking Info</h3>
+ 
+<p><strong>Date: </strong>{{ booking.date | date }}</p>
+  <p><strong>Time Slot:</strong> {{ booking.timeSlot }}</p>
+ 
+  <h3>Vehicle Info</h3>
+  <p><strong>Make:</strong> {{ vehicle.make }}</p>
+  <p><strong>Model:</strong> {{ vehicle.model }}</p>
+  <p><strong>Registration No:</strong> {{ vehicle.registrationNumber }}</p>
+ 
+  <h3>Service Center Info</h3>
+  <p><strong>Name:</strong> {{ booking.serviceCenterName }}</p>
+</div>
+ 
+ 

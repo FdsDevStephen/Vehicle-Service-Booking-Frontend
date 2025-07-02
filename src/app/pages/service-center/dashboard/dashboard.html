@@ -1,0 +1,40 @@
+
+<div class="container">
+  <!-- Welcome Section -->
+  <section class="dashboard-container">
+    <h1 class="welcome-text">Welcome, {{ userName }}</h1>
+    <p class="subtext">Manage your service center operations efficiently.</p>
+  </section>
+
+  <!-- Shortcuts -->
+  <section class="dashboard-container">
+    <h2 class="section-title">Action Shortcuts</h2>
+    <div class="shortcut-cards">
+      <div class="shortcut-card" routerLink="/service-center/appointments">
+        <span class="icon material-symbols-outlined text-blue">event_note</span>
+        <h3>View Appointments</h3>
+        <p>Manage scheduled services</p>
+      </div>
+      <div class="shortcut-card" routerLink="/service-center/manage-services">
+        <span class="icon material-symbols-outlined text-green">build</span>
+        <h3>Manage Services</h3>
+        <p>Update service offerings</p>
+      </div>
+      <div class="shortcut-card" routerLink="/service-center/mechanics">
+        <span class="icon material-symbols-outlined text-purple">group</span>
+        <h3>Manage Mechanics</h3>
+        <p>View and manage your team</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tip Bar -->
+  <section class="dashboard-container">
+    <h2 class="section-title">Tip</h2>
+    <div class="tip">
+      <span class="material-symbols-outlined text-warning">lightbulb</span>
+      <p>Optimize your service schedule to reduce customer wait times!</p>
+    </div>
+  </section>
+</div>
+
