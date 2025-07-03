@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Invoice, InvoiceService } from '../../../shared/services/invoice.service';
 import { BookingService } from '../../../shared/services/booking.service';
 import { VehicleService } from '../../../shared/services/vehicle.service';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ export class InvoiceDetailComponent implements OnInit {
  
   constructor(
     private route: ActivatedRoute,
+    private toastr: ToastrService,
     private invoiceService: InvoiceService,
     private bookingService: BookingService,
     private vehicleService: VehicleService
@@ -48,12 +50,25 @@ export class InvoiceDetailComponent implements OnInit {
     });
   }
  
+  // payInvoice() {
+  //   this.invoiceService.updatePaymentStatus(this.invoiceId, 'Paid').subscribe(() => {
+  //     alert('Payment successful');
+  //     this.invoice.paymentStatus = 'Paid';
+  //   });
+  // }
+ 
   payInvoice() {
-    this.invoiceService.updatePaymentStatus(this.invoiceId, 'Paid').subscribe(() => {
-      alert('Payment successful');
-      this.invoice.paymentStatus = 'Paid';
+    this.invoiceService.updatePaymentStatus(this.invoiceId, 'Paid').subscribe({
+      next: (res) => {
+        this.invoice.paymentStatus = 'Paid';
+        this.toastr.success(res.message || 'Payment successful');
+      },
+      error: (err) => {
+        const msg = typeof err.error === 'string'
+          ? err.error
+          : err.error?.error || 'Payment failed. Please try again.';
+        this.toastr.error(msg);
+      }
     });
   }
 }
- 
- 

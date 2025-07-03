@@ -1,89 +1,116 @@
 h2 {
-    text-align: center;
-    margin: 32px 0 18px 0;
-    color: #1976d2;
-    font-size: 1.7em;
-    font-weight: 700;
+  color: #1976d2;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  font-size: 1.4em;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  border-left: 8px solid #1976d2;
+  padding-left: 12px;
+  background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
+  border-radius: 3px;
+}
+
+h5 {
+  color: #1976d2;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  font-size: 1.4em;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  border-left: 8px solid #1976d2;
+  padding-left: 12px;
+  background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
+  border-radius: 3px;
+}
+
+hr {
+  margin: 36px 0 30px 0;
+  border: 0;
+  border-top: 2px solid #e3eaf5;
+}
+
+div[ng-reflect-ng-if],
+div[ng-reflect-ng-if="true"],
+div[ng-reflect-ng-if="false"] {
+  /* Angular creates these for *ngIf; this selector ensures spacing applies to all info blocks */
+  background: #f7fbff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px 0 rgba(25, 118, 210, 0.06);
+  padding: 26px 24px 18px 24px;
+  margin: 0 auto 32px auto;
+  max-width: 520px;
+}
+
+p {
+  font-size: 1em;
+  color: #1a314a;
+  margin-bottom: 13px;
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+strong {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.15em;
+  color: #185bb5;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-left: 6px solid #1976d2;
+  padding-left: 10px;
+  background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
+  border-radius: 3px;
+}
+
+.btn-success {
+  background: linear-gradient(90deg, #43a047 80%, #8bc34a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 11px 34px;
+  font-size: 1em;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(67, 160, 71, 0.09);
+  transition: background 0.18s, box-shadow 0.18s;
+  display: inline-block;
+}
+
+.btn-success:hover,
+.btn-success:focus {
+  background: linear-gradient(90deg, #8bc34a 0%, #43a047 100%);
+  box-shadow: 0 4px 16px 0 rgba(67, 160, 71, 0.15);
+}
+
+@media (max-width: 600px) {
+
+  div[ng-reflect-ng-if],
+  div[ng-reflect-ng-if="true"],
+  div[ng-reflect-ng-if="false"] {
+    padding: 16px 6vw 10px 6vw;
+    max-width: 98vw;
   }
-  
-  hr {
-    margin: 36px 0 30px 0;
-    border: 0;
-    border-top: 2px solid #e3eaf5;
+
+  h2 {
+    font-size: 1.2em;
   }
-  
-  div[ng-reflect-ng-if], div[ng-reflect-ng-if="true"], div[ng-reflect-ng-if="false"] {
-    /* Angular creates these for *ngIf; this selector ensures spacing applies to all info blocks */
-    background: #f7fbff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px 0 rgba(25, 118, 210, 0.06);
-    padding: 26px 24px 18px 24px;
-    margin: 0 auto 32px auto;
-    max-width: 520px;
-  }
-  
-  p {
-    font-size: 1em;
-    color: #1a314a;
-    margin-bottom: 13px;
-    margin-top: 0;
-    line-height: 1.5;
-  }
-  
-  strong {
-    color: #1976d2;
-    font-weight: 600;
-  }
-  
+
   h3 {
-    font-size: 1.15em;
-    color: #185bb5;
-    margin-top: 22px;
-    margin-bottom: 10px;
-    font-weight: 600;
-    border-left: 6px solid #1976d2;
-    padding-left: 10px;
-    background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
-    border-radius: 3px;
-  }
-  
-  .btn-success {
-    background: linear-gradient(90deg, #43a047 80%, #8bc34a 100%);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 11px 34px;
     font-size: 1em;
-    font-weight: 700;
-    margin-top: 18px;
-    margin-bottom: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px 0 rgba(67,160,71,0.09);
-    transition: background 0.18s, box-shadow 0.18s;
-    display: inline-block;
+    padding-left: 6px;
   }
-  
-  .btn-success:hover, .btn-success:focus {
-    background: linear-gradient(90deg, #8bc34a 0%, #43a047 100%);
-    box-shadow: 0 4px 16px 0 rgba(67,160,71,0.15);
+
+  .btn-success {
+    font-size: 0.98em;
+    padding: 12px 0;
+    width: 100%;
+    margin-top: 14px;
   }
-  
-  @media (max-width: 600px) {
-    div[ng-reflect-ng-if], div[ng-reflect-ng-if="true"], div[ng-reflect-ng-if="false"] {
-      padding: 16px 6vw 10px 6vw;
-      max-width: 98vw;
-    }
-    h2 {
-      font-size: 1.2em;
-    }
-    h3 {
-      font-size: 1em;
-      padding-left: 6px;
-    }
-    .btn-success {
-      font-size: 0.98em;
-      padding: 12px 0;
-      width: 100%;
-      margin-top: 14px;
-    }
-  }
+}

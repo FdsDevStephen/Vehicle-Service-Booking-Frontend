@@ -84,8 +84,8 @@ export class MyBookings implements OnInit {
     };
  
     this.bookingService.updateBooking(booking.bookingId, updatePayload).subscribe({
-      next: () => {
-        this.toastr.success('Booking updated successfully!');
+      next: (res) => {
+        this.toastr.success(res.message || 'Booking updated successfully!');
         this.editId = null;
         this.loadBookings();
       },

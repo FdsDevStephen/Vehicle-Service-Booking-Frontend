@@ -1,32 +1,49 @@
-<h2>Invoice Details</h2>
- 
-<div *ngIf="invoice">
-  <p><strong>Invoice ID:</strong> {{ invoice.invoiceId }}</p>
-  <p><strong>Booking ID:</strong> {{ invoice.bookingId }}</p>
-  <p><strong>Service Type:</strong> {{ invoice.serviceTypeDescription }}</p>
-  <p><strong>Total Amount:</strong> {{ invoice.totalAmount | currency }}</p>
-  <p><strong>Status:</strong> {{ invoice.paymentStatus }}</p>
- 
-  <div *ngIf="invoice.paymentStatus === 'Pending'">
-    <button class="btn btn-success" (click)="payInvoice()">Pay Now</button>
+<div class="container mt-4">
+
+  <!-- Invoice Details Card -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-primary">Invoice Information</h5>
+      <p><strong>Invoice ID:</strong> {{ invoice.invoiceId }}</p>
+      <p><strong>Booking ID:</strong> {{ invoice.bookingId }}</p>
+      <p><strong>Service Type:</strong> {{ invoice.serviceTypeDescription }}</p>
+      <p><strong>Total Amount:</strong> {{ invoice.totalAmount | currency }}</p>
+      <p><strong>Status:</strong> {{ invoice.paymentStatus }}</p>
+
+      <div *ngIf="invoice.paymentStatus === 'Pending'" class="text-center mt-3">
+        <button class="btn btn-success btn-lg" (click)="payInvoice()">Pay Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking and Vehicle Details -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-primary">Booking & Vehicle Info</h5>
+      <div class="row">
+        <!-- Booking Info -->
+        <div class="col-md-6">
+          <h6 class="text-primary">Booking Info</h6>
+          <p><strong>Date:</strong> {{ booking.date | date }}</p>
+          <p><strong>Time Slot:</strong> {{ booking.timeSlot }}</p>
+        </div>
+
+        <!-- Vehicle Info -->
+        <div class="col-md-6">
+          <h6 class="text-primary">Vehicle Info</h6>
+          <p><strong>Make:</strong> {{ vehicle.make }}</p>
+          <p><strong>Model:</strong> {{ vehicle.model }}</p>
+          <p><strong>Registration No:</strong> {{ vehicle.registrationNumber }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Center Info -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title text-primary">Service Center Info</h5>
+      <p><strong>Name:</strong> {{ booking.serviceCenterName }}</p>
+    </div>
   </div>
 </div>
- 
-<hr />
- 
-<div *ngIf="booking && vehicle">
-  <h3>Booking Info</h3>
- 
-<p><strong>Date: </strong>{{ booking.date | date }}</p>
-  <p><strong>Time Slot:</strong> {{ booking.timeSlot }}</p>
- 
-  <h3>Vehicle Info</h3>
-  <p><strong>Make:</strong> {{ vehicle.make }}</p>
-  <p><strong>Model:</strong> {{ vehicle.model }}</p>
-  <p><strong>Registration No:</strong> {{ vehicle.registrationNumber }}</p>
- 
-  <h3>Service Center Info</h3>
-  <p><strong>Name:</strong> {{ booking.serviceCenterName }}</p>
-</div>
- 
- 

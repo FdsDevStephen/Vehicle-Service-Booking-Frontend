@@ -31,7 +31,7 @@
           <td [attr.data-label]="'Service Type'">
             <ng-container *ngIf="editId === b.bookingId; else displayServiceType">
               <select [(ngModel)]="b.serviceTypeId">
-                <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeId">
+                <option *ngFor="let type of serviceTypes" [value]="type.serviceTypeid">
                   {{ type.description }}
                 </option>
               </select>

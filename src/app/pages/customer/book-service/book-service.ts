@@ -42,11 +42,14 @@ export class BookService implements OnInit {
   minDate: string = '';
 
   ngOnInit(): void {
+    
     this.loadVehicles();
     this.loadServiceCenters();
     this.loadServiceTypes();
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
+
+    
   }
 
   loadVehicles() {

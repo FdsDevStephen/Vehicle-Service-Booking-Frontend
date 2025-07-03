@@ -32,6 +32,19 @@
   cursor: pointer;
 }
 
+h2 {
+  color: #1976d2;
+  margin-top: 32px;
+  margin-bottom: 18px;
+  font-size: 1.4em;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  border-left: 8px solid #1976d2;
+  padding-left: 12px;
+  background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
+  border-radius: 3px;
+}
+
 .plus {
   font-weight: bold;
   font-size: 1.2rem;

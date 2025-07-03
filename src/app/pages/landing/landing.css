@@ -40,6 +40,13 @@ body {
     padding: 60px 30px;
     background: #f0f6ff;
   }
+
+  .hero-image{
+    max-width: 400px;
+    background-color: transparent;
+    mix-blend-mode: multiply;
+    border-radius: 10px;
+  }
   
   .hero-text h1 {
     font-size: 2rem;

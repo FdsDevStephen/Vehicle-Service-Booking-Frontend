@@ -58,7 +58,7 @@ export const routes: Routes = [
       },
     
       {
-        path: 'service-center/invoices',
+        path: 'invoices',
         canActivate: [authGuard],
         loadComponent: () => import('./pages/customer/invoice-list/invoice-list').then(m => m.InvoiceListComponent)
       },

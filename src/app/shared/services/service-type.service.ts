@@ -39,6 +39,14 @@ export class ServiceTypeService {
     return this.http.post<ServiceType>(this.apiUrl, dto);
   }
 
+  getCenterServiceTypes(): Observable<ServiceType[]> {
+    return this.http.get<ServiceType[]>(`${this.apiUrl}`);
+  }
+
+  updateServiceType(id: number, dto: CreateServiceTypeDto): Observable<{ message: string }> {
+    return this.http.put<{ message: string }>(`${this.apiUrl}/${id}`, dto);
+  }
+
   deleteServiceType(id: number): Observable<string> {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${sessionStorage.getItem('token')}`,
