@@ -1,4 +1,3 @@
-// ✅ profile.ts (Updated with avatar letter logic and fallback)
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -28,6 +27,7 @@ export class Profile implements OnInit {
 
   isServiceCenter = false;
   isSubmitting = false;
+  isEditing = false; // Flag to toggle edit mode
   avatarLetter: string = '';
 
   ngOnInit(): void {
@@ -46,6 +46,22 @@ export class Profile implements OnInit {
     });
   }
 
+  startEditing(): void {
+    this.isEditing = true;
+  }
+
+  cancelEditing(): void {
+    this.isEditing = false;
+    this.userService.getProfile().subscribe({
+      next: (res) => {
+        this.profile = res; // Reset profile to original values
+      },
+      error: () => {
+        this.toastr.error('Failed to reset profile');
+      }
+    });
+  }
+
   onUpdate(form: NgForm): void {
     if (form.invalid) return;
 
@@ -54,6 +70,7 @@ export class Profile implements OnInit {
       next: () => {
         this.toastr.success('Profile updated successfully');
         this.isSubmitting = false;
+        this.isEditing = false; // Exit edit mode
 
         // Update avatar letter if name changed
         if (this.profile.name && typeof this.profile.name === 'string') {

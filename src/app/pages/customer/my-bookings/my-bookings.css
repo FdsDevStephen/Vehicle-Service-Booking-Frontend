@@ -1,47 +1,42 @@
-.title {
-  text-align: center;
-  color: #0d47a1;
-  margin-bottom: 20px;
-}
-
+/* General Styles */
 .booking-container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 32px 8px 60px 8px;
+  padding: 24px 8px 40px 8px; /* Reduced padding */
 }
 
 h2 {
   color: #1976d2;
-  margin-top: 32px;
-  margin-bottom: 18px;
-  font-size: 1.4em;
-  letter-spacing: 0.03em;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  letter-spacing: 0.02em;
   font-weight: 700;
-  border-left: 8px solid #1976d2;
-  padding-left: 12px;
+  border-left: 6px solid #1976d2;
+  padding-left: 10px;
   background: linear-gradient(90deg, #eef6ff 0 60%, transparent 100%);
   border-radius: 3px;
 }
 
 /* Table Styles */
 .booking-table {
-  width: 98%;
-  margin: 0 auto 36px auto;
+  width: 96%; /* Reduced width */
+  margin: 0 auto 24px auto; /* Reduced margin */
   border-collapse: separate;
   border-spacing: 0;
-  box-shadow: 0 4px 18px rgba(32,60,120,0.07);
+  box-shadow: 0 2px 12px rgba(32, 60, 120, 0.05); /* Reduced shadow intensity */
   background: #fff;
-  border-radius: 8px;
+  border-radius: 6px; /* Reduced border radius */
   overflow: hidden;
-  font-size: 1em;
+  font-size: 0.9em; /* Reduced font size */
 }
 
 .booking-table th,
 .booking-table td {
-  padding: 13px 10px;
+  padding: 8px 6px; /* Reduced padding */
   border: 1px solid #e5e8f0;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px; /* Reduced font size */
 }
 
 .booking-table th {
@@ -49,7 +44,7 @@ h2 {
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.01em;
-  border-bottom: 3px solid #185bb5;
+  border-bottom: 2px solid #185bb5; /* Reduced border width */
 }
 
 .booking-table tr:nth-child(even) td {
@@ -63,25 +58,25 @@ h2 {
 .empty-message,
 p {
   text-align: center;
-  font-size: 17px;
+  font-size: 15px; /* Reduced font size */
   color: #777;
-  margin: 38px 0;
+  margin: 24px 0; /* Reduced margin */
 }
 
 /* Action Buttons */
 button,
 .btn-cancel {
-  padding: 6px 16px;
-  font-size: 14px;
+  padding: 5px 12px; /* Reduced padding */
+  font-size: 13px; /* Reduced font size */
   margin: 2px 3px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px; /* Reduced border radius */
   cursor: pointer;
   font-weight: 600;
   background: #1976d2;
   color: #fff;
   transition: background 0.18s, box-shadow 0.18s;
-  box-shadow: 0 1px 5px 0 rgba(25,118,210,0.07);
+  box-shadow: 0 1px 4px 0 rgba(25, 118, 210, 0.05); /* Reduced shadow intensity */
 }
 
 button:hover,
@@ -100,11 +95,11 @@ button:hover,
 /* Responsive Table: mobile-friendly stacked rows */
 @media (max-width: 900px) {
   .booking-container {
-    padding: 18px 2vw 40px 2vw;
+    padding: 16px 2vw 32px 2vw; /* Reduced padding */
   }
   .booking-table th, .booking-table td {
-    font-size: 14px;
-    padding: 10px 4px;
+    font-size: 13px; /* Reduced font size */
+    padding: 8px 4px; /* Reduced padding */
   }
 }
 
@@ -122,20 +117,20 @@ button:hover,
     display: none;
   }
   .booking-table tr {
-    margin-bottom: 18px;
-    border-radius: 7px;
+    margin-bottom: 12px; /* Reduced margin */
+    border-radius: 6px; /* Reduced border radius */
     border: 1px solid #e0e0e0;
     background: #fff;
-    box-shadow: 0 1px 4px 0 rgba(25, 118, 210, 0.03);
-    padding: 7px 0 7px 0;
+    box-shadow: 0 1px 3px 0 rgba(25, 118, 210, 0.02); /* Reduced shadow intensity */
+    padding: 6px 0 6px 0; /* Reduced padding */
   }
   .booking-table td {
-    padding: 10px 14px;
+    padding: 8px 12px; /* Reduced padding */
     text-align: right;
     position: relative;
     border: none;
     border-bottom: 1px solid #e9eff7;
-    min-height: 32px;
+    min-height: 28px; /* Reduced height */
   }
   .booking-table td:last-child {
     border-bottom: none;
@@ -145,35 +140,35 @@ button:hover,
     float: left;
     color: #1976d2;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px; /* Reduced font size */
     text-align: left;
-    min-width: 120px;
-    padding-right: 10px;
+    min-width: 100px; /* Reduced width */
+    padding-right: 8px; /* Reduced padding */
   }
   button, .btn-cancel {
-    width: 90%;
-    margin: 6px 0 2px 0;
-    font-size: 15px;
-    padding: 10px 0;
+    width: 85%; /* Reduced width */
+    margin: 4px 0 2px 0; /* Reduced margin */
+    font-size: 14px; /* Reduced font size */
+    padding: 8px 0; /* Reduced padding */
   }
 }
 
 /* Action buttons side by side */
 .action-btn-group {
   display: flex;
-  gap: 8px;        /* Space between buttons */
+  gap: 6px; /* Reduced gap */
   justify-content: center;
 }
 
 .action-btn-group button {
-  margin: 0;       /* Remove default margins */
-  min-width: 64px; /* Consistent button width */
+  margin: 0;
+  min-width: 60px; /* Reduced width */
 }
 
 /* Table paddings and vertical alignment */
 .booking-table th, .booking-table td {
-  padding: 8px 6px;        /* Less vertical padding */
-  vertical-align: middle;  /* Center content vertically */
+  padding: 6px 4px; /* Reduced padding */
+  vertical-align: middle;
 }
 
 /* Optional: Make multiline cells align top, if you prefer */
@@ -182,10 +177,9 @@ button:hover,
 }
 
 .no-bookings-message {
-   
   text-align: center;
   color: #666;
-  font-size: 1.1rem;
-  margin: 40px auto;
+  font-size: 1rem; /* Reduced font size */
+  margin: 32px auto; /* Reduced margin */
   font-style: italic;
 }

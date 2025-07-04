@@ -1,107 +1,200 @@
+/* General Styles */
 .auth-container {
-    display: flex;
-    justify-content: center;
-    padding: 50px 20px;
-    background-color: #f7f9fc;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.register-box {
+  background: white;
+  padding: 30px 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 800px; /* Increased width for two-column layout */
+}
+
+.register-box h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 25px;
+}
+
+.toggle-role {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.toggle-role button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.toggle-role button.active {
+  background: #003366;
+  color: white;
+  border-color: #003366;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.row {
+  display: flex;
+  gap: 20px; /* Added gap between columns */
+}
+
+.col-md-6 {
+  flex: 1; /* Ensures equal width for both columns */
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #1565c0;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #003366;
+}
+
+.footer-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.footer-link a {
+  color: #ff6600;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-link a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Responsive Styles */
+
+/* Tablet Screens (max-width: 1024px) */
+@media (max-width: 1024px) {
   .register-box {
-    background: white;
-    padding: 30px 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    max-width: 400px;
+    padding: 25px;
+    max-width: 700px; /* Adjusted width for tablets */
   }
-  
+
+  .row {
+    flex-direction: column; /* Stack columns vertically on tablets */
+    gap: 0; /* Remove gap for stacked layout */
+  }
+
+  .col-md-6 {
+    width: 100%; /* Full width for stacked layout */
+  }
+
   .register-box h2 {
-    text-align: center;
-    color: #003366;
-    margin-bottom: 25px;
+    font-size: 22px;
   }
-  
-  .toggle-role {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
+
   .toggle-role button {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background: #fff;
-    color: #333;
-    cursor: pointer;
-    font-weight: 500;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-  }
-  
-  .toggle-role button.active {
-    background: #003366;
-    color: white;
-    border-color: #003366;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 0.95rem;
-  }
-  
-  .btn-submit {
-    width: 100%;
-    background-color: #1565c0;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-submit:hover {
-    background-color: #003366;
-  }
-  
-  .footer-link {
-    text-align: center;
-    margin-top: 15px;
+    padding: 8px;
     font-size: 0.9rem;
   }
-  
-  .footer-link a {
-    color: #ff6600;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .footer-link a:hover {
-    text-decoration: underline;
-  }
-  
 
-  .error {
-    color: red;
+  .form-group input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .btn-submit {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .footer-link {
     font-size: 0.85rem;
-    margin-top: 4px;
+  }
+}
+
+/* Mobile Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 20px;
   }
 
-  
+  .register-box {
+    padding: 20px;
+    max-width: 300px; /* Adjusted width for mobile screens */
+  }
+
+  .row {
+    flex-direction: column; /* Stack columns vertically on mobile */
+    gap: 0; /* Remove gap for stacked layout */
+  }
+
+  .col-md-6 {
+    width: 100%; /* Full width for stacked layout */
+  }
+
+  .register-box h2 {
+    font-size: 20px;
+  }
+
+  .toggle-role button {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
+
+  .form-group input {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .btn-submit {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+  }
+}
