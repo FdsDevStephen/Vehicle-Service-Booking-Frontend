@@ -31,7 +31,7 @@
             <td>{{ appointment.customerName }}</td>
             <td>{{ appointment.mechanicName }}</td>
             <td>{{ appointment.serviceTypeDescription }}</td>
-            <td>{{ appointment.date }}</td>
+            <td [attr.data-label]="'Date'">{{ appointment.date | date:'mediumDate' }}</td>
             <td>{{ appointment.timeSlot }}</td>
             <td>{{ appointment.price | currency }}</td>
             <td>{{ appointment.serviceStatus }}</td>
@@ -79,7 +79,7 @@
             <td>{{ appointment.customerName }}</td>
             <td>{{ appointment.mechanicName }}</td>
             <td>{{ appointment.serviceTypeDescription }}</td>
-            <td>{{ appointment.date }}</td>
+            <td [attr.data-label]="'Date'">{{ appointment.date | date:'mediumDate' }}</td>
             <td>{{ appointment.timeSlot }}</td>
             <td>{{ appointment.price | currency }}</td>
             <td>{{ appointment.serviceStatus }}</td>
@@ -124,7 +124,7 @@
             <td>{{ appointment.customerName }}</td>
             <td>{{ appointment.mechanicName }}</td>
             <td>{{ appointment.serviceTypeDescription }}</td>
-            <td>{{ appointment.date }}</td>
+            <td [attr.data-label]="'Date'">{{ appointment.date | date:'mediumDate' }}</td>
             <td>{{ appointment.timeSlot }}</td>
             <td>{{ appointment.price | currency }}</td>
             <td>Cancelled</td>

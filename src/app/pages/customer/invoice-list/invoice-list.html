@@ -11,7 +11,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Invoice ID</th>
+          <!-- <th>Invoice ID</th> -->
           <th>Booking ID</th>
           <th>Service Type</th>
           <th>Total Amount</th>
@@ -21,7 +21,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let invoice of invoices">
-          <td [attr.data-label]="'Invoice ID'">{{ invoice.invoiceId }}</td>
+          <!-- <td [attr.data-label]="'Invoice ID'">{{ invoice.invoiceId }}</td> -->
           <td [attr.data-label]="'Booking ID'">{{ invoice.bookingId }}</td>
           <td [attr.data-label]="'Service Type'">{{ invoice.serviceTypeDescription }}</td>
           <td [attr.data-label]="'Total Amount'">{{ invoice.totalAmount | currency }}</td>

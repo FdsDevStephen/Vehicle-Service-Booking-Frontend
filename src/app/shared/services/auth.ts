@@ -56,24 +56,24 @@ export class AuthService {
   }
 
   setToken(token: string): void {
-    if (isPlatformBrowser(this.platformId)) { // <--- Add platform check
+    if (isPlatformBrowser(this.platformId)) { 
       sessionStorage.setItem('token', token);
     }
   }
 
-  getToken(): string | null { // <--- New helper method
-    if (isPlatformBrowser(this.platformId)) { // <--- Add platform check
+  getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
       return sessionStorage.getItem('token');
     }
     return null;
   }
 
   isLoggedIn(): boolean {
-    return !!this.getToken(); // <--- Use getToken
+    return !!this.getToken();
   }
 
   logout(): void {
-    if (isPlatformBrowser(this.platformId)) { // <--- Add platform check
+    if (isPlatformBrowser(this.platformId)) {
       sessionStorage.removeItem('token');
     }
   }

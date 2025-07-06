@@ -32,7 +32,7 @@ export class UserDashboard implements OnInit {
   private setGreeting(): void {
     const hour = new Date().getHours();
     this.greeting = hour < 12 ? 'Good Morning'
-                  : hour < 17 ? 'Good Afternoon'
+                  : hour < 15 ? 'Good Afternoon'
                   : 'Good Evening';
   }
 

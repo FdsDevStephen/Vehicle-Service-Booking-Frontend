@@ -37,7 +37,6 @@ export class MyBookings implements OnInit {
   loadBookings(): void {
     this.bookingService.getUserBookings().subscribe({
       next: (res) => {
-        console.log('Bookings:', res); // Debugging line
         this.bookings = res;
         this.pendingBookings = res.filter((b) => b.serviceStatus === 'Scheduled');
         this.cancelledBookings = res.filter((b) => b.serviceStatus === 'Cancelled'); // Adjusted filter condition
