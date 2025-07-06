@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ServiceCenterAppointmentsService } from '../../../shared/services/appointment.service';
 import { FormsModule } from '@angular/forms';
 import { scheduled } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
  
 @Component({
   selector: 'appointments',
@@ -28,7 +29,10 @@ export class AppointmentsComponent {
   };
   itemsPerPage = 5;
  
-  constructor(private appointmentService: ServiceCenterAppointmentsService) {}
+  constructor(
+    private appointmentService: ServiceCenterAppointmentsService,
+    private toastr: ToastrService
+  ) {}
  
   ngOnInit(): void {
     this.loadAppointments();
@@ -56,7 +60,10 @@ export class AppointmentsComponent {
   markAsCompleted(appointmentId: number): void {
     this.isLoading = true;
     this.appointmentService.updateBookingStatus(appointmentId, 'Completed').subscribe({
-      next: () => this.loadAppointments(),
+      next: () => {
+        this.toastr.success('Service Completed');
+        this.loadAppointments();
+      },
       error: () => {
         this.errorMessage = 'Failed to update status.';
         this.isLoading = false;

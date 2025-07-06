@@ -29,7 +29,7 @@
           </p>
         </div>
         <div class="card-footer bg-light text-end">
-          <button class="btn btn-danger btn-sm px-3 py-1 shadow-sm" (click)="deleteMechanic(mechanic.mechanicId)">
+          <button class="btn btn-danger btn-sm px-3 py-1 shadow-sm" (click)="openDeleteDialog(mechanic.mechanicId)">
             <i class="bi bi-trash"></i> Delete
           </button>
         </div>
@@ -37,3 +37,44 @@
     </div>
   </div>
 </section>
+
+<!-- Delete Confirmation Dialog -->
+<div *ngIf="showDeleteDialog">
+  <!-- Custom backdrop -->
+  <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:1050;"></div>
+  <!-- Centered modal -->
+  <div style="
+    position:fixed;
+    top:0;left:0;
+    width:100vw;height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1060;
+    pointer-events:none;
+  ">
+    <div style="
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 2px 16px rgba(0,0,0,0.25);
+      max-width:400px;
+      width:90vw;
+      pointer-events:auto;
+      overflow:hidden;
+    ">
+      <div class="modal-header" style="border-bottom:1px solid #dee2e6;padding:1rem;">
+        <h5 class="modal-title text-danger m-0">Confirm Deletion</h5>
+      </div>
+      <div class="modal-body" style="padding:1rem;">
+        <p>
+          Are you sure you want to delete mechanic
+          <strong>{{ mechanicToDelete?.mechanicName }}</strong>?
+        </p>
+      </div>
+      <div class="modal-footer" style="border-top:1px solid #dee2e6;padding:0.75rem 1rem;display:flex;justify-content:flex-end;gap:0.5rem;">
+        <button class="btn btn-secondary" (click)="closeDeleteDialog()">Cancel</button>
+        <button class="btn btn-danger" (click)="confirmDeleteMechanic()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

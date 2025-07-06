@@ -15,6 +15,10 @@ export class MechanicComponent implements OnInit {
   isLoading = true;
   errorMessage = '';
 
+  // Add dialog state
+  showDeleteDialog = false;
+  mechanicToDelete: Mechanic | null = null;
+
   constructor(private mechanicService: MechanicService) {}
 
   ngOnInit(): void {
@@ -56,30 +60,39 @@ export class MechanicComponent implements OnInit {
     });
   }
 
-  deleteMechanic(id: number): void {
-    console.log('Fetching mechanic with ID:', id); // Debugging line
-  
+  // Open the delete confirmation dialog
+  openDeleteDialog(id: number): void {
     this.mechanicService.getMechanicById(id).subscribe({
       next: (mechanic) => {
-        console.log('Mechanic fetched:', mechanic); // Debugging line
-  
-        if (confirm(`Are you sure you want to delete mechanic "${mechanic.mechanicName}"?`)) {
-          this.mechanicService.deleteMechanic(id).subscribe({
-            next: () => {
-              console.log('Mechanic deleted successfully:', id); // Debugging line
-              this.mechanics = this.mechanics.filter((m) => m.mechanicId !== id);
-              alert('Mechanic deleted successfully.');
-            },
-            error: (err) => {
-              console.error('Failed to delete mechanic:', err); // Debugging line
-              alert(err?.error || 'Failed to delete mechanic.');
-            },
-          });
-        }
+        this.mechanicToDelete = mechanic;
+        this.showDeleteDialog = true;
       },
       error: (err) => {
-        console.error('Failed to fetch mechanic:', err); // Debugging line
+        console.error('Failed to fetch mechanic:', err);
         alert('Failed to fetch mechanic. Cannot proceed with deletion.');
+      },
+    });
+  }
+
+  // Close the dialog without deleting
+  closeDeleteDialog(): void {
+    this.showDeleteDialog = false;
+    this.mechanicToDelete = null;
+  }
+
+  // Confirm deletion
+  confirmDeleteMechanic(): void {
+    if (!this.mechanicToDelete) return;
+    const id = this.mechanicToDelete.mechanicId;
+    this.mechanicService.deleteMechanic(id).subscribe({
+      next: () => {
+        this.mechanics = this.mechanics.filter((m) => m.mechanicId !== id);
+        this.closeDeleteDialog();
+      },
+      error: (err) => {
+        console.error('Failed to delete mechanic:', err);
+        alert(err?.error || 'Failed to delete mechanic.');
+        this.closeDeleteDialog();
       },
     });
   }
